@@ -5,8 +5,6 @@ A Python-based chatbot for real-time news summarization with fake news detection
 ## Features
 
 - Real-time news summarization with category selection
-- Fake news detection
-- AI-powered debate mode
 - "Did You Know?" random facts feature
 
 ## Setup Instructions
