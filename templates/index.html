@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="theme-dark h-screen">
+    <div class="container mx-auto px-4 h-full flex flex-col py-4">
+        <!-- Header -->
+        <header class="text-center py-4 relative">
+            <!-- Theme Switcher -->
+            <button id="theme-toggle" class="absolute right-4 top-4 theme-toggle-btn" aria-label="Toggle theme">
+                <!-- Sun icon -->
+                <svg class="theme-light-icon hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
+                </svg>
+                <!-- Moon icon -->
+                <svg class="theme-dark-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                    </path>
+                </svg>
+            </button>
+            
+            <h1 class="text-3xl font-bold text-theme-primary">AI News Chatbot</h1>
+            <p class="text-theme-secondary mt-2">Select a category and chat with AI about the latest news</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="flex flex-1 gap-4 h-[calc(100vh-8rem)] min-h-0">
+            <!-- Sidebar -->
+            <div class="w-64 bg-theme-surface rounded-lg p-4 flex flex-col h-full">
+                <!-- News Categories -->
+                <div class="categories-section flex-none">
+                    <h2 class="text-theme-primary text-lg font-semibold mb-4">News Categories</h2>
+                    <div class="categories-list">
+                        <button class="category-btn w-full" data-category="region">🇮🇳 Indian News</button>
+                        <button class="category-btn w-full" data-category="business">💼 Business</button>
+                        <button class="category-btn w-full" data-category="entertainment">🎬 Entertainment</button>
+                        <button class="category-btn w-full" data-category="general">📰 General</button>
+                        <button class="category-btn w-full" data-category="health">🏥 Health</button>
+                        <button class="category-btn w-full" data-category="science">🔬 Science</button>
+                        <button class="category-btn w-full" data-category="sports">⚽ Sports</button>
+                        <button class="category-btn w-full" data-category="technology">💻 Technology</button>
+                    </div>
+                </div>
+
+                <!-- Saved Articles -->
+                <div class="flex-1 overflow-hidden flex flex-col min-h-0 mt-6">
+                    <h2 class="text-theme-primary text-lg font-semibold mb-4 flex-none">Saved Articles</h2>
+                    <div id="saved-articles" class="overflow-y-auto flex-1 pr-2 -mr-2">
+                        <!-- Saved articles will be inserted here -->
+                        <div class="text-theme-secondary text-sm italic" id="no-saved-articles">
+                            No saved articles yet
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fun Facts -->
+                <div class="flex-none mt-6">
+                    <h2 class="text-theme-primary text-lg font-semibold mb-4">Fun Facts</h2>
+                    <button id="getFact" class="fact-btn w-full bg-theme-accent text-theme-text px-4 py-2 rounded-lg hover:bg-theme-accent-hover transition-colors">
+                        <i class="fas fa-lightbulb mr-2"></i>Did You Know?
+                    </button>
+                    <div id="factContainer" class="fact-container mt-4">
+                        <div class="fact-content bg-theme-surface-variant p-4 rounded-lg border-l-4 border-theme-accent">
+                            Click the button above to see an interesting fact!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="flex-1 flex flex-col bg-theme-surface rounded-lg overflow-hidden">
+                <!-- Messages Container -->
+                <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4">
+                    <div class="bot-message bg-theme-surface">
+                        Welcome! Select a news category or click "Did You Know?" for an interesting fact!
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="p-4 border-t border-theme-border">
+                    <div class="flex gap-2">
+                        <input type="text" id="user-input" 
+                            class="flex-1 bg-theme-input text-theme-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-theme-accent"
+                            placeholder="Type your message or ask 'Do you know?' for a fact...">
+                        <button id="send-button" class="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>
